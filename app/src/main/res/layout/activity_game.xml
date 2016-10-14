@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7cb242"
+    android:gravity="center"
+    tools:context="com.jparzonka.crossandcircle.activities.GameActivity">
+
+
+    <ImageButton
+        android:id="@+id/button12"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_toRightOf="@+id/button11"
+        android:onClick="onClickButton12" />
+
+    <ImageButton
+        android:id="@+id/button13"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_toRightOf="@+id/button12"
+        android:onClick="onClickButton13" />
+
+    <ImageButton
+        android:id="@+id/button21"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@+id/button11"
+        android:onClick="onClickButton21" />
+
+    <ImageButton
+        android:id="@+id/button22"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@id/button12"
+        android:layout_toRightOf="@+id/button21"
+        android:onClick="onClickButton22" />
+
+    <ImageButton
+        android:id="@+id/button23"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@id/button13"
+        android:layout_toRightOf="@+id/button22"
+        android:onClick="onClickButton23" />
+
+    <ImageButton
+        android:id="@+id/button31"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@id/button21"
+        android:onClick="onClickButton31" />
+
+    <ImageButton
+        android:id="@+id/button32"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@id/button22"
+        android:layout_toRightOf="@+id/button31"
+        android:onClick="onClickButton32" />
+
+    <ImageButton
+        android:id="@+id/button33"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_below="@id/button23"
+        android:layout_toRightOf="@+id/button32"
+        android:onClick="onClickButton33" />
+
+    <ImageButton
+        android:id="@+id/button11"
+        android:layout_width="@dimen/box_size"
+        android:layout_height="@dimen/box_size"
+        android:layout_alignLeft="@+id/button21"
+        android:layout_alignStart="@+id/button21"
+        android:layout_alignTop="@+id/button12"
+        android:onClick="onClickButton11" />
+
+</RelativeLayout>
