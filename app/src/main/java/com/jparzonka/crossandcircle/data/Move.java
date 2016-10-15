@@ -11,6 +11,7 @@ public class Move {
         setMove(move);
     }
 
+    
     public int getMove() {
         return move;
     }
