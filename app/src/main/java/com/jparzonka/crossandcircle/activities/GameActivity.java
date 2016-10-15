@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.jparzonka.crossandcircle.R;
-import com.jparzonka.crossandcircle.data.Moves;
+import com.jparzonka.crossandcircle.util.MovesControl;
 
 public class GameActivity extends AppCompatActivity {
     private ImageButton button11, button12, button13, button21, button22, button23, button31, button32, button33;
     private Bundle bundle;
-    private Moves moves;
-    int id = 0, i = 0, circle = 0, cross = 0;
+    private MovesControl moves;
+    int id = 0, i = 0;
     private boolean choose;
 
     @Override
@@ -21,9 +21,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         bundle = getIntent().getExtras();
         choose = bundle.getBoolean("Choose");
-        circle = R.drawable.kolko;
-        cross = R.drawable.krzyzyk;
-        moves = new Moves();
+        moves = new MovesControl();
         initButtons();
     }
 
