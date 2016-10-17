@@ -1,7 +1,5 @@
 package com.jparzonka.crossandcircle.util;
 
-import android.util.Log;
-
 import com.jparzonka.crossandcircle.data.Move;
 
 import java.util.ArrayList;
@@ -11,15 +9,15 @@ import java.util.ArrayList;
  */
 
 public class MovesControl {
-    private ArrayList<Move> moveList;
-    private final Integer MAX_MOVES = 9;
+    private static ArrayList<Move> moveList;
+    private static final Integer MAX_MOVES = 9;
     private int moveIndex = 0;
 
     public MovesControl() {
         moveList = new ArrayList<>(MAX_MOVES);
     }
 
-    public ArrayList<Move> getMoveList() {
+    static ArrayList<Move> getMoveList() {
         return moveList;
     }
 
@@ -27,8 +25,8 @@ public class MovesControl {
         moveList.add(moveIndex, new Move(move));
         moveIndex++;
         if (moveIndex >= MAX_MOVES + 1) moveIndex = 0;
-        Log.i("Move number ", String.valueOf(move));
-        Log.i("Move index number: ", String.valueOf(moveIndex));
+//        Log.i("Move number ", String.valueOf(move));
+//        Log.i("Move index number: ", String.valueOf(moveIndex));
     }
 
 

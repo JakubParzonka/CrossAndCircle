@@ -7,7 +7,7 @@ import com.jparzonka.crossandcircle.R;
  */
 
 public abstract class Symbol {
-    private static final int CROSS = R.drawable.krzyzyk;
-    private static final int CIRCLE = R.drawable.krzyzyk;
+    public static final int CROSS = R.drawable.krzyzyk;
+    public static final int CIRCLE = R.drawable.kolko;
 
 }
