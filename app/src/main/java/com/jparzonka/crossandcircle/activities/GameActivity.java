@@ -97,17 +97,17 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void addAndCheck(int id) {
-        moves.addMoves(id);
         changeImageController();
+        moves.addMoves(id);
         executing.check(moveNumber);
         numberControl();
     }
 
     private void changeImageController() {
         if (choose) {
-            changeImage(Symbol.CROSS, Symbol.CIRCLE);
-        } else {
             changeImage(Symbol.CIRCLE, Symbol.CROSS);
+        } else {
+            changeImage(Symbol.CROSS, Symbol.CIRCLE);
         }
     }
 

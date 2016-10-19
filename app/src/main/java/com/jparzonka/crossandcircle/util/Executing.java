@@ -1,3 +1,4 @@
+
 package com.jparzonka.crossandcircle.util;
 
 import android.util.Log;
@@ -14,41 +15,115 @@ public class Executing {
 
     private boolean flag;
     private ArrayList<Move> moveList, crossMoves, circleMoves;
+    private int i;
 
-    public Executing(boolean flag/*, ArrayList<Move> moveList*/) {
+    public Executing(boolean flag) {
         this.flag = flag;
-        crossMoves = new ArrayList<>(9);
-        circleMoves = new ArrayList<>(9);
-        //this.moveList = moveList;
+        crossMoves = new ArrayList<>();
+        circleMoves = new ArrayList<>();
+        i = 0;
     }
 
     //true-> crosses
 
     /**
-     * TODO 1. Zautomatyzować algorytm rozdzielania tablic
-     * TODO 2. Wyrzuca IndexOutOfBoundException, ponieważ przy dodaniu do tablicy ruchu danego gracza,
-     * TODO    w splitMoves(), podczas rozdzielania tablic dochodzi do przekroczenia rozmiaru.
+     * TODO UPDATE: Obrazki się nie zgadzają. do obu tablic kopiuje to samo. Indeksy się zgadzają.
+     * TODO DO obu tablic dodaje się to samo i jeden ruch jest opóźnione dodawanie??
+     *
+     * @param moveNumber METHOD OF SHAME!!
      */
-    private void splitMoves() {
+    private void splitMoves(int moveNumber) {
         if (!moveList.isEmpty()) {
+            //MovesControl.printMoves();
+
+//SHAME!!
             if (flag) {
-                for (int i = 0; i < moveList.size(); i++) {
-                    crossMoves.add(i, moveList.get(i * 2));
-                    if (circleMoves.size() > 1)
-                        circleMoves.add(i, moveList.get((i * 2) + 1));
+                // CROSSES
+                switch (moveNumber) {
+                    case 1:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 3:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 5:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 7:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 9:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
                 }
-            } else {
-                for (int i = 0; i < moveList.size(); i++) {
-                    circleMoves.add(i, moveList.get(i * 2));
-                    if (crossMoves.size() > 1)
-                        crossMoves.add(i, moveList.get((i * 2) + 1));
+                //SHAME!!
+                //CIRCLES
+                switch (moveNumber) {
+                    case 2:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 4:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 6:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 8:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
                 }
+            } else {     //SHAME!!
+                //CIRCLES
+                switch (moveNumber) {
+                    case 1:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 3:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 5:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 7://SHAME!!
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 9:
+                        circleMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                }
+                // CROSSES
+                switch (moveNumber) {
+                    case 2:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 4:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 6://SHAME!!
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                    case 8:
+                        crossMoves.add(moveList.get(moveNumber - 1));
+                        break;
+                }//SHAME!!
             }
         } else {
             Log.e("Moves array is", "empty");
         }
+
+
+        // Log.i(TAG, "sizes after method: " + String.valueOf(crossMoves.size()) + "  " + String.valueOf(circleMoves.size()));
+
     }
 
+    private void printMoves(ArrayList<Move> list, String whichPlayer) {
+        System.out.println("\n");
+        System.out.println(whichPlayer.toUpperCase() + " array: ");
+        for (Move m : list) {
+            System.out.println(m.getMove());
+        }
+        System.out.println("\n");
+    }
     //  Log.i("I am a thread!!!", "Cool");
 
     private void setMoveList(ArrayList<Move> moveList) {
@@ -57,8 +132,10 @@ public class Executing {
 
     public void check(int moveNumber) {
         setMoveList(MovesControl.getMoveList());
-        //   splitMoves();
-        Log.i("Move " + String.valueOf(moveNumber), String.valueOf(moveList.get(moveNumber - 1).getMove()));
+        splitMoves(moveNumber);
+        printMoves(crossMoves, "Crosses");
+        printMoves(circleMoves, "Circles");
+        //Log.i("Move " + String.valueOf(moveNumber), String.valueOf(moveList.get(moveNumber - 1).getMove()));
         if (moveNumber >= 5) {
             boolean cir = getConditionForCircle();
             boolean cro = getConditionForCross();
@@ -78,7 +155,7 @@ public class Executing {
     }
 
     private boolean getConditionForCross() {
-        Log.i("Sprawdzamy warunek dla ", "krzyży");
+        //Log.i("Sprawdzamy warunek dla ", "krzyży");
         return (isCross(11) && isCross(21) && isCross(31)) ||
                 (isCross(12) && isCross(22) && isCross(32)) ||
                 (isCross(13) && isCross(23) && isCross(33)) ||
@@ -90,7 +167,7 @@ public class Executing {
     }
 
     private boolean getConditionForCircle() {
-        Log.i("Sprawdzamy warunek dla ", "kół");
+        //Log.i("Sprawdzamy warunek dla ", "kół");
         return (isCircle(11) && isCircle(21) && isCircle(31)) ||
                 (isCircle(12) && isCircle(22) && isCircle(32)) ||
                 (isCircle(13) && isCircle(23) && isCircle(33)) ||

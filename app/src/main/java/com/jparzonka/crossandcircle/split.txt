@@ -1,0 +1,45 @@
+
+/*
+private void splitMoves(int moveNumber) {
+        if (!moveList.isEmpty()) {
+            if (flag) {
+                System.out.println("Move number: " + moveNumber);
+
+                if ((moveNumber % 2 == 1)) {
+                    crossMoves.add(moveList.get(moveNumber / 2));
+                    System.out.println("Value: of cross index: " + ((moveNumber / 2)));
+                } else if ((moveNumber % 2 == 0)) {
+                    circleMoves.add(moveList.get((moveNumber / 2) - 1));
+                    System.out.println("Value of circle index: " + ((moveNumber / 2) - 1));
+                }
+            } else {
+                System.out.println("Move number: " + moveNumber);
+
+                if ((moveNumber % 2 == 1)) {
+                    circleMoves.add(moveList.get(moveNumber / 2));
+                    System.out.println("Value: of circle index: " + ((moveNumber / 2)));
+                } else if ((moveNumber % 2 == 0)) {
+                    crossMoves.add(moveList.get((moveNumber / 2) - 1));
+                    System.out.println("Value of cross index: " + ((moveNumber / 2) - 1));
+                }
+            }
+        } else {
+            Log.e("Moves array is", "empty");
+        }
+        if (moveNumber == 9) {
+            for (Move m : crossMoves) {
+                System.out.print("\nCross moves after split: ");
+                System.out.print(m.getMove() + " ");
+            }
+            for (Move m : circleMoves) {
+                System.out.print("\nCircle moves after split: ");
+                System.out.print(m.getMove() + " ");
+            }
+        }
+
+        // Log.i(TAG, "sizes after method: " + String.valueOf(crossMoves.size()) + "  " + String.valueOf(circleMoves.size()));
+
+    }
+
+
+ */
