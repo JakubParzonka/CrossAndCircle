@@ -48,47 +48,47 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClickButton11(View view) {
         id = 11;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton12(View view) {
         id = 12;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton13(View view) {
         id = 13;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton21(View view) {
         id = 21;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton22(View view) {
         id = 22;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton23(View view) {
         id = 23;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton31(View view) {
         id = 31;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton32(View view) {
         id = 32;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     public void onClickButton33(View view) {
         id = 33;
-        addAndCheck(id);
+        mainMethod(id);
     }
 
     private void numberControl() {
@@ -96,7 +96,7 @@ public class GameActivity extends AppCompatActivity {
         if (moveNumber > 9) moveNumber = 1;
     }
 
-    private void addAndCheck(int id) {
+    private void mainMethod(int id) {
         changeImageController();
         moves.addMoves(id);
         executing.check(moveNumber);

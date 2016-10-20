@@ -1,4 +1,3 @@
-
 package com.jparzonka.crossandcircle.util;
 
 import android.util.Log;
@@ -24,12 +23,8 @@ public class Executing {
         i = 0;
     }
 
-    //true-> crosses
 
     /**
-     * TODO UPDATE: Obrazki się nie zgadzają. do obu tablic kopiuje to samo. Indeksy się zgadzają.
-     * TODO DO obu tablic dodaje się to samo i jeden ruch jest opóźnione dodawanie??
-     *
      * @param moveNumber METHOD OF SHAME!!
      */
     private void splitMoves(int moveNumber) {
@@ -124,7 +119,6 @@ public class Executing {
         }
         System.out.println("\n");
     }
-    //  Log.i("I am a thread!!!", "Cool");
 
     private void setMoveList(ArrayList<Move> moveList) {
         this.moveList = moveList;
@@ -133,12 +127,13 @@ public class Executing {
     public void check(int moveNumber) {
         setMoveList(MovesControl.getMoveList());
         splitMoves(moveNumber);
-        printMoves(crossMoves, "Crosses");
-        printMoves(circleMoves, "Circles");
-        //Log.i("Move " + String.valueOf(moveNumber), String.valueOf(moveList.get(moveNumber - 1).getMove()));
+        //printMoves(crossMoves, "Crosses");
+        //printMoves(circleMoves, "Circles");
         if (moveNumber >= 5) {
             boolean cir = getConditionForCircle();
+            Log.i("CIR ", String.valueOf(cir));
             boolean cro = getConditionForCross();
+            Log.i("CRO ", String.valueOf(cro));
             if (cir)
                 Log.i("Wygrały kółka!", String.valueOf(cir));
             else if (cro)
@@ -147,34 +142,61 @@ public class Executing {
     }
 
     private boolean isCircle(int x) {
-        return circleMoves.contains(x);
+        boolean b = false;
+        for (int i = 0; i < circleMoves.size(); i++) {
+            if (x == circleMoves.get(i).getMove()) b = true;
+        }
+        System.out.println("isCircle boolean: " + String.valueOf(b) + " of x: " + x);
+
+        return b;
+
     }
 
     private boolean isCross(int x) {
-        return crossMoves.contains(x);
+        boolean a = false;
+        for (int i = 0; i < crossMoves.size(); i++) {
+            if (x == crossMoves.get(i).getMove()) a = true;
+        }
+        System.out.println("isCross boolean: " + String.valueOf(a) + " of x: " + x);
+        return a;
     }
 
+
     private boolean getConditionForCross() {
-        //Log.i("Sprawdzamy warunek dla ", "krzyży");
-        return (isCross(11) && isCross(21) && isCross(31)) ||
-                (isCross(12) && isCross(22) && isCross(32)) ||
-                (isCross(13) && isCross(23) && isCross(33)) ||
-                (isCross(11) && isCross(12) && isCross(13)) ||
-                (isCross(21) && isCross(22) && isCross(23)) ||
-                (isCross(31) && isCross(32) && isCross(33)) ||
-                (isCross(12) && isCross(22) && isCross(33)) ||
-                (isCross(13) && isCross(22) && isCross(31));
+        System.out.println("******************************");
+        Log.i("Sprawdzamy warunek dla ", " krzyży");
+        boolean cross[] = new boolean[8];
+        cross[0] = isCross(11) && isCross(21) && isCross(31);
+        cross[1] = isCross(12) && isCross(22) && isCross(32);
+
+        cross[2] = isCross(13) && isCross(23) && isCross(33);
+        cross[3] = isCross(11) && isCross(12) && isCross(13);
+
+        cross[4] = isCross(21) && isCross(22) && isCross(23);
+        cross[5] = isCross(31) && isCross(32) && isCross(33);
+
+        cross[6] = isCross(12) && isCross(22) && isCross(33);
+        cross[7] = isCross(13) && isCross(22) && isCross(31);
+
+        return (cross[0] || cross[1] || cross[2] || cross[3] || cross[4] || cross[5] || cross[6] || cross[7]);
     }
 
     private boolean getConditionForCircle() {
-        //Log.i("Sprawdzamy warunek dla ", "kół");
-        return (isCircle(11) && isCircle(21) && isCircle(31)) ||
-                (isCircle(12) && isCircle(22) && isCircle(32)) ||
-                (isCircle(13) && isCircle(23) && isCircle(33)) ||
-                (isCircle(11) && isCircle(12) && isCircle(13)) ||
-                (isCircle(21) && isCircle(22) && isCircle(23)) ||
-                (isCircle(31) && isCircle(32) && isCircle(33)) ||
-                (isCircle(12) && isCircle(22) && isCircle(33)) ||
-                (isCircle(13) && isCircle(22) && isCircle(31));
+        System.out.println("******************************");
+        Log.i("Sprawdzamy warunek dla ", " kół");
+        boolean circle[] = new boolean[8];
+        circle[0] = isCircle(11) && isCircle(21) && isCircle(31);
+        circle[1] = isCircle(12) && isCircle(22) && isCircle(32);
+
+        circle[2] = isCircle(13) && isCircle(23) && isCircle(33);
+        circle[3] = isCircle(11) && isCircle(12) && isCircle(13);
+
+        circle[4] = isCircle(21) && isCircle(22) && isCircle(23);
+        circle[5] = isCircle(31) && isCircle(32) && isCircle(33);
+
+        circle[6] = isCircle(12) && isCircle(22) && isCircle(33);
+        circle[7] = isCircle(13) && isCircle(22) && isCircle(31);
+
+        return (circle[0] || circle[1] || circle[2] || circle[3] || circle[4] || circle[5] || circle[6] || circle[7]);
     }
 }
