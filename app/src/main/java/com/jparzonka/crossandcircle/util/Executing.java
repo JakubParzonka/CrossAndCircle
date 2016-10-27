@@ -16,6 +16,7 @@ public class Executing {
     private ArrayList<Move> moveList, crossMoves, circleMoves;
     private int i;
 
+
     public Executing(boolean flag) {
         this.flag = flag;
         crossMoves = new ArrayList<>();
@@ -160,7 +161,6 @@ public class Executing {
         System.out.println("isCross boolean: " + String.valueOf(a) + " of x: " + x);
         return a;
     }
-
 
     private boolean getConditionForCross() {
         System.out.println("******************************");
